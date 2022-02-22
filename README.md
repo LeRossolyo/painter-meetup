@@ -8,8 +8,8 @@ GraphQL introduction for everyone and a WorkShop introduction
 
 `node -v`
 
-Si vous voyez une version s'afficher c'est tout bon vous avez node d'installer sur votre machine.
-Pour les autres installer le en utilisant les commandes suivante en fonction de votre distribution linux.
+Si vous voyez une version s'afficher c'est tout bon vous avez node installé sur votre machine.
+Pour les autres, installez-le en utilisant les commandes suivantes en fonction de votre distribution linux.
 
 ### Fedora
 
@@ -23,7 +23,7 @@ sudo dnf install nodejs
 sudo apt install nodejs
 ```
 
-Une fois node installé on vas pouvoir commencer !
+Une fois node installé, on va pouvoir commencer !
 
 ## Création du projet
 
@@ -40,9 +40,9 @@ Initialisez un projet npm
 npm init -y
 ```
 
-Vous trouvrez un fichier package.json : c'est ce fichier qui nous servira de répertoire pour toutes les différents packages que nous allons installer.
+Vous trouverez un fichier package.json : c'est ce fichier qui nous servira de répertoire pour les différents packages que nous allons installer.
 
-Installation des différents packages dont nous allons avoir besoins
+Installation des différents packages dont nous allons avoir besoin.
 
 Rajoutez eu niveau de scripts
 
@@ -50,14 +50,14 @@ Rajoutez eu niveau de scripts
     "start": "node index.js"
 ```
 
-Vous verrez plus tard pourquoi
+Vous verrez plus tard pourquoi :)
 
 ```sh
 npm i graphql apollo-server sqlite3 --save-dev
 ```
 
-graphql : qui nous servira a crée des schémas graphql de données
-apollo-server : qui nous permettera de crée un server
+graphql : qui nous servira a créer des schémas graphql de données
+apollo-server : qui nous permettera de créer un serveur
 
 Créez un fichier index.js qui sera le point de départ de notre API
 
@@ -88,7 +88,7 @@ const app = new ApolloServer({
 app.listen().then(({ url }) => console.log(`Server on port ${url} 🎨`));
 ```
 
-#### Explication de chaque éléments :
+#### Explication des différents éléments :
 
 ```js
 const { ApolloServer } = require("apollo-server");
@@ -104,8 +104,8 @@ const schema = `
   `;
 ```
 
-Création d'un schéma de requêtes avec leurs noms et type de ce qu'elles renvoient.
-Ici on a une query du nom de hello qui nous renverra un donnée de type "String" obligatoirement signifier avec le "!"
+Création d'un schéma de requêtes avec leurs noms et types de ce qu'elles renvoient.
+Ici on a une query du nom de "hello" qui nous renverra une donnée de type "String" obligatoirement signifiée avec le "!"
 
 ```js
 const resolvers = {
@@ -115,7 +115,7 @@ const resolvers = {
 };
 ```
 
-Création de resolvers c'est a dire de fonction de résolutions:
+Création de resolvers, c'est a dire de fonction de résolutions:
 
 NB : Fonction flécher en javascript :
 
@@ -125,7 +125,7 @@ const fonction = (argument) => {
 };
 ```
 
-Un resolvers peut avoir plusieurs arguments prédéfinis mais nous y reviendrons plus tard.
+Un resolver peut avoir plusieurs arguments prédéfinis mais nous y reviendrons plus tard.
 
 ```js
 const app = new ApolloServer({
@@ -136,17 +136,17 @@ const app = new ApolloServer({
 app.listen().then(({ url }) => console.log(`Server on port ${url} 🎨`));
 ```
 
-app est le server qui mets en relation les schémas et les resolvers qui leurs sont associer via un nom communs ici "hello".
+app est le server qui met en relation les schémas et les resolvers qui leurs sont associés via un nom commun, ici "hello".
 
 ### Test
 
-Pour lancer votre server tapez:
+Pour lancer votre serveur tapez:
 
 ```sh
   npm start
 ```
 
-Résultat obtenus :
+Résultat obtenu :
 
 ```sh
 ➜  painter-meetup git:(main) ✗ npm start
@@ -157,22 +157,22 @@ Résultat obtenus :
 Server on port http://localhost:4000/ 🎨
 ```
 
-Ouvrez votre navigateur de rechercher et taper l'adresse "http://localhost:4000/
+Ouvrez votre navigateur de recherche et taper l'adresse "http://localhost:4000/
 
-vous devrire trombé sur cette page
+vous devrez tomber sur cette page :
 
 CF Image Afficher
 
 Puis vous pouvez essayer de taper votre requète dans le terminal de commande
 
-Bravo vous venez de créez une API GRAPHQL !
+Bravo, vous venez de créer une API GRAPHQL !
 
 ## Création d'une Query
 
 ### Création d'un nouveau Type
 
 On va créer un type "Painter" qui contiendra toutes les données d'un peintre.
-On crée aussi une quey painter qui va nous renvoyer les données d'un peintre.
+On crée aussi une query painter qui va nous renvoyer les données d'un peintre.
 
 ```graphql
 type Query {
@@ -187,7 +187,7 @@ type Painter {
 }
 ```
 
-On va crée des données temporaires dans le fichier resolver.
+On va créer des données temporaires dans le fichier resolver.
 
 ```js
 const painter = [
@@ -199,7 +199,7 @@ const painter = [
 ];
 ```
 
-On va ensuite rejouter un resolvers a cette nouvelle Query painter qui va nous renvoyer les données d'un peintre.
+On va ensuite rajouter un resolver à cette nouvelle Query painter qui va nous renvoyer les données d'un peintre.
 
 ```js
 const resolvers = {
@@ -210,11 +210,11 @@ const resolvers = {
 };
 ```
 
-On remarque bien que le nom de mon resolvers est bien le même que ma query.
+On remarque bien que le nom de mon resolver est bien le même que ma query.
 
 ## Création d'une Mutation
 
-Une mutation est un requêtes de modification, elle comprends donc les requêtes "POST", "DELETE" et autres.
+Une mutation est un requête de modification, elle comprend donc les requêtes "POST", "DELETE" et autres.
 
 On va tout d'abord rajouter le type mutation a notre schéma de type
 
@@ -224,7 +224,7 @@ type Mutation {
 }
 ```
 
-Puis on ajoute un resolver simple dans le resolvers (Attention a bien garder le même nom que le type)
+Puis on ajoute un resolver simple dans le resolver (Attention à bien garder le même nom que le type)
 
 ```js
 const resolvers = {
@@ -241,15 +241,15 @@ const resolvers = {
 };
 ```
 
-On vas ensuite tester en ajoutant différents artistes a notre liste.
+On va ensuite tester en ajoutant différents artistes à notre liste.
 
 ### Création des Bases de données
 
 #### Création de la DB et des Models
 
-On va ensuite crée une base de données pour stocker nos différents peintre et leurs peintures !
+On va ensuite créer une base de données pour stocker nos différents peintre et leurs peintures !
 
-On va utiliser une base donnée sqlite car c'est rapide a mettre en place et très simple d'utilisation. Notament avec Sequelize Client.
+On va utiliser une base de données sqlite car c'est rapide à mettre en place et très simple d'utilisation. Notamment avec Sequelize Client.
 
 Initialisation de la DB.
 
@@ -257,13 +257,13 @@ Initialisation de la DB.
   node_modules/.bin/sequelize init
 ```
 
-Initialisation d'un models de donner.
+Initialisation d'un modèle de données.
 
 ```bash
   node_modules/.bin/sequlize model:create --name Painter --attributes name:string,last_name:string
 ```
 
-Vous obtiendrez alors deux fichiers une dans models qui contiendra le models de votre élement en base de données. et le resolvers dans le dossier migrations.
+Vous obtiendrez alors deux fichiers, un dans models qui contiendra le model de votre élement en base de données, et le resolver dans le dossier migrations.
 
 On fait de même pour les peintures.
 
@@ -273,7 +273,7 @@ On fait de même pour les peintures.
 
 #### Mise en relation des deux tables
 
-On va ajouter dans le resolvers de Painting une variables painterId, qui sera la référence du peintre qui a fait cette peinture.
+On va ajouter dans le resolver de Painting une variable painterId, qui sera la référence du peintre qui a fait cette peinture.
 
 ```js
 painterId: {
@@ -281,7 +281,7 @@ painterId: {
 }
 ```
 
-Ensuite nous allons ajoutez les relations entres les deux tables:
+Ensuite nous allons ajouter les relations entre les deux tables:
 
 Dans le fichier ./models/painter.js:
 
@@ -299,11 +299,11 @@ static associate(models) {
 }
 ```
 
-Ce qui reviens a faire que plusieurs donnée peuvent être accéssible via le painterID donc plusieurs peintures.
+Ce qui reviens à faire que plusieurs données peuvent être accéssibles via le painterID donc plusieurs peintures.
 
 #### Ajouts de la DB a l'Api
 
-Une fois notre base de données crée il va falloir l'ajouter à notre API
+Une fois notre base de données créée il va falloir l'ajouter à notre API
 
 Dans index.js on va écrire:
 
@@ -338,4 +338,4 @@ const resolvers = {
   },
 };
 ```
-Vous pourrez ensuite lancer votre API et ajouter un peintre pour voir si ca marche :-)
+Vous pourrez ensuite lancer votre API et ajouter un peintre pour voir si ça marche :-)
